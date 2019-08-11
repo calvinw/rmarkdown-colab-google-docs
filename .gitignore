@@ -6,6 +6,7 @@
 !header.html
 !index.html
 !page.html
+!opensInOtherWindow.html
 *.pdf
 *.local
 lsAll

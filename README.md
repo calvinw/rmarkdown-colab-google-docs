@@ -11,16 +11,16 @@ Each Rmd file can be rendered to all of the following formats if desired:
 1. ipynb 
 1. docx
 
-The ipynb files can be uploaded to Google Colab once they are created. Each one specifies the correct kernel (R or python3) for colab to use.  
+The ipynb files can be uploaded and opened in [Google Colab](https://colab.research.google.com/) once they are created. Each one specifies the correct kernel (R or python3) for Colab to use.  
 
-These ipynb files are created by a command line tool called jupytext.  
+These ipynb files are created by a command line tool called [jupytext](https://github.com/mwouts/jupytext).  
 
 Jupytext allows converting from rmarkdown or (regular) markdown to ipynb formats.
 
 We use `rmarkdown::render` in our Makefile to render the html, pdf, md and docx versions of our files, then `jupytext` to render from md to ipynb.
 
 
-Jupyter must be installed as well since it is used to create the R kernel version of the ipynb formats. Also the R kernel of Jupyter is used in the R versions of the ipynb Colab formats. This kernel choice works in Google Colab, though it is not advertised yet.   
+[Jupyter](https://jupyter.org/) must be installed as well since it is used to create the R kernel version of the ipynb formats. Also the R kernel of Jupyter is used in the R versions of the ipynb Colab formats. This kernel choice works in Google Colab, though it is not advertised yet.   
 
 To see what the project depends on look at the .gitlab-ci.yml file since that is a recipe to install pre-reqs for this project. Roughly the relevant things to install are as follows:
 
@@ -48,7 +48,7 @@ Rscript -e "install.packages('IRkernel')"
 Rscript -e "IRkernel::installspec()"
 ```
 
-Install reticulate to run Python engine in Rmd files:
+Install [reticulate](https://rstudio.github.io/reticulate/) to run Python engine in Rmd files:
 
 ```bash
 Rscript -e "install.packages('reticulate')"
@@ -87,12 +87,14 @@ If you would like to make it so that you can automatically upload the ipynb and 
 
 This is basically the example we began with that became our google-upload.js. You will need to create a credentials.json like they do in that example. When you run google-upload.js it will upload to your versions of the Google Colab notebooks or Google Docs in your google drive.
 
-Before you run the google-upload.js, you should create a Google Colab file for each Rmd you create and also a Google Doc (.docx version) as well. You can "make a copy" of our google versions of these if you want, they should be viewable (but not editable) by the world and then you use the googleids from your copies in the json files:
+Before you run the google-upload.js, you should create a Google Colab file for each Rmd you create and also a Google Doc (.docx version) as well. You can "make a copy" of our google versions of these if you want, they should be viewable (but not editable) by the world [Google Colab and Docs folder](https://drive.google.com/open?id=1eBAj6EFbtJpHDTqdA8UTdPzr-asPaSGH)
+
+Then you use your own googleids from your copies and replace the ones in:
 
 1. google-colab-ids.json
 2. google-docx-ids.json
 
-google-upload.js app does not create any Google Docs for you, just uploads and saves to existing ones after they are rendered by the make process.
+Note google-upload.js app does not create any Google Docs for you, just uploads and saves to existing ones after they are rendered by the make process.
 
 Once you have your own versions of the google ids you want to use, you can upload the current built versions of the ipynb like this:
 
@@ -100,7 +102,7 @@ Once you have your own versions of the google ids you want to use, you can uploa
 node google-upload.js rExample.ipynb
 ```
 
-This reads the googleid for the Colab document for SimpleR from google-colab-ids.json and uploads the SimpleR.ipynb to that file in your google drive. 
+This reads the googleid for the Colab document for rExample from google-colab-ids.json and uploads the rExample.ipynb to that file in your google drive. 
 
 When you run this you will ask you to authenticate the app and allow it to access your Google Drive. For this it uses the credentials.json you made above. It creates a token.json as you do this and that will be used on subsequent runs of the tool. This is the same process that the quickstart example from google above uses, so refer to that if you need more info on this process.. 
 
@@ -112,7 +114,7 @@ node google-upload.js rExample.docx
 
 This reads the googleid for the Docs document for rExample from google-docx-ids.json and uploads the rExample.docx to that file into google drive.
 
-In our case the files in google drive are at this link: 
+The files we use in google drive are at this link: 
 
 [Google Colab and Docs folder](https://drive.google.com/open?id=1eBAj6EFbtJpHDTqdA8UTdPzr-asPaSGH)
 

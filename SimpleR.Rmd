@@ -1,9 +1,15 @@
+---
+title: "Simple R Example"
+jupyter:
+  kernelspec:
+    display_name: R 
+    language: R 
+    name: ir 
+---
 
-# Simple Rmarkdown 
-
-
+Here is some simple R.
 ```{r}
-x<-3
+x<-23
 y<-12
 ```
 

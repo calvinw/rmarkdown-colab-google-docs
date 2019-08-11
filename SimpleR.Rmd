@@ -4,7 +4,7 @@
 
 ```{r}
 x<-3
-y<-4
+y<-12
 ```
 
 Some inline r code: y is `r y`
@@ -12,7 +12,7 @@ Some inline r code: y is `r y`
 Some display math
 
 $$
-x = \frac{`r x`}{4} 
+x = \frac{`r 2*x`}{`r y`} 
 $$
 
 
@@ -21,5 +21,5 @@ cat("I am the king")
 ```
 
 ```{r}
-plot(runif(30))
+plot(runif(50))
 ```

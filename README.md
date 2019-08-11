@@ -19,32 +19,44 @@ To see what the project depends on look at the .gitlab-ci.yml file since that is
 
 We install jupyter and jupytext to enable the conversions to ipynb format:
 
->apt-get -y install python3-pip
->pip3 install jupyter jupytext
+```bash
+apt-get -y install python3-pip
+pip3 install jupyter jupytext
+```
 
 Then we need to install the R related packages we need:
 
->apt-get -y install pandoc
->wget -qO- "https://yihui.name/gh/tinytex/tools/install-unx.sh" | sh
->Rscript -e "install.packages('rmarkdown')"
+```bash
+apt-get -y install pandoc
+wget -qO- "https://yihui.name/gh/tinytex/tools/install-unx.sh" | sh
+Rscript -e "install.packages('rmarkdown')"
+```
 
 Then we install the R kernel for jupyter (needed by jupytext to convert):
 
->Rscript -e "install.packages('IRkernel')"
->Rscript -e "IRkernel::installspec()"
+```bash
+Rscript -e "install.packages('IRkernel')"
+Rscript -e "IRkernel::installspec()"
+```
 
 And we install reticulate to run Python engine in Rmd files:
 
->Rscript -e "install.packages('reticulate')"
+```bash
+Rscript -e "install.packages('reticulate')"
+```
 
 And then install matplotlib for graphics in Python Rmds
 
->pip3 install matplotlib
+```bash
+pip3 install matplotlib
+```
 
 
 Then from the command line build it this way: 
 
->make 
+```bash
+make 
+```
 
 or from Rstudio choose the "Build All" menu from the Build tab
 

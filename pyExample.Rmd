@@ -15,7 +15,7 @@ This illustrates how to generate python notebooks (for colab) from rmarkdown fil
 
 ```{python}
 import matplotlib.pyplot as plt
-plt.plot([3,2,4,3,4,3], [1,4,9,16,9,12], 'ro')
+plt.plot([3,2,4,3,4,3], [1,4,9,16,9,12], 'o')
 plt.show()
 ```
 

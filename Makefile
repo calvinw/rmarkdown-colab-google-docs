@@ -1,6 +1,6 @@
 SHELL:=/bin/bash
-PYTHON_SOURCES=$(shell find . -name "Py*.Rmd")
-R_SOURCES=$(shell find . -name "*.Rmd" ! -name "Py*.Rmd")
+PYTHON_SOURCES=$(shell find . -name "py*.Rmd")
+R_SOURCES=$(shell find . -name "*.Rmd" ! -name "py*.Rmd")
 SOURCES = $(R_SOURCES) $(PYTHON_SOURCES)
 
 HTML_FILES = $(SOURCES:%.Rmd=%.html)

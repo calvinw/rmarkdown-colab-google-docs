@@ -25,8 +25,8 @@
   <div id="app">
   <v-app id="inspire">
     <v-navigation-drawer fixed v-model="drawer" app >
-  <v-treeview activatable :items="items" :active.sync="active" :open="open" open-on-click>
-      <template v-slot:prepend="{item, open}">
+  <v-treeview ref="mytreeview" activatable :items="items" :active.sync="active">
+      <template v-slot:prepend="{item}">
 	  <v-icon v-if="!item.file">
 	    mdi-folder
 	  </v-icon>
@@ -41,7 +41,7 @@
     </v-navigation-drawer>
     <v-toolbar color="indigo" dark fixed app>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title> {{page}}</v-toolbar-title>
+      <v-toolbar-title> {{title}}</v-toolbar-title>
     </v-toolbar>
     <v-content>
       <v-container fluid fill-height fill-width>
@@ -61,7 +61,7 @@
   <script src="https://cdn.jsdelivr.net/npm/vuetify@1.x/dist/vuetify.js"></script>
 
   <script>
-    new Vue({
+    let vm = new Vue({
       el: '#app',
 	  created: function () {
 	      console.log("preparing socket io");
@@ -94,7 +94,7 @@
 		console.log("I was clicked");
 		if(item.file === 'ipynb') {
 		    if(this.ipythonMode === "jupyter")
-			window.open("http://localhost:8888/notebooks/" +item.id);
+			window.open("http://localhost:8888/notebooks/" +item.name);
 		    else if(this.ipythonMode === "colab") {
 			window.open("https://colab.research.google.com/drive/" + item.googleId)
 		    }
@@ -102,30 +102,104 @@
 		else if(item.file === 'docx') {
 		   window.open("https://docs.google.com/document/d/" + item.googleId +"/edit")
 		}
+	    },
+	    isLocalhost: function() {
+		    if( location.hostname === '' ||
+		        location.hostname === 'localhost' ||
+			location.hostname === '127.0.0.1') 
+			return true;
+		    else 
+			return false;
+	    },
+	    localhostUrl: function() {
+		    let url = null; 
+		    if(location.hostname === '') {
+			url = "";
+		    }
+		    else if(location.hostname === 'localhost') {
+		       url = "http://localhost:3000/"
+		    }
+		    else if(location.hostname === "127.0.0.1") {
+		       url = "http://127.0.0.1:3000/"
+		    }
+		return url;
+	    },
+	    findItemById: function(id, children){
+		for(let i=0; i<children.length; i++) {
+		    let item = children[i];
+		    if(item.id === id)
+			return item;
+		    else {
+			if(item.hasOwnProperty("children")){
+			    let found = this.findItemById(id, item.children)
+			    if(found) 
+				return found; 
+			}
+		    }
+		}
+		return null;
 	    }
 	},
 	computed: {
+	    title: function() {
+		if(this.page === "opensInOtherWindow.html")
+		    return "";
+		else
+		    return this.page;
+	    },
 	    page: function() {
 		console.log("updating page !!!");
 		if(this.active.length ===1) {
 		    console.log("updating url: this.active[0] is: "+this.active[0]);
-		    let filename = this.active[0];
-		    const ext = filename.substring(filename.lastIndexOf('.')+1, filename.length)
-		    let localhostUrl = "http://localhost:3000/"
-		    if(location.hostname === 'localhost' || 
-		       location.hostname === '127.0.0.1') {
-		       return localhostUrl + filename;
-		    }
+		    let id = this.active[0];
+		    console.log("this.active[0] is: " + this.active[0]);
 
+		    let item = this.findItemById(id, this.items);
+
+		    let filename = item.name;
+		    const ext = item.file;
+		    //const ext = filename.substring(filename.lastIndexOf('.')+1, filename.length)
+		    console.log("hostname is " + location.hostname);
+
+		    //Try to determine if we are running in development mode 
 		    let productionUrl = "https://calvinw.gitlab.io/rmarkdown-colab-google-docs/"
-		    if(ext != "docx") {
-		       return productionUrl + filename;
-		    }
-		    else {
-		       let wordViewer = "https://view.officeapps.live.com/op/embed.aspx?src="
-		       return wordViewer + productionUrl + filename;
-		    }
+		    if(ext === "docx") {
 
+			if(this.isLocalhost()) {
+			    let localhostUrl = this.localhostUrl();
+			    return localhostUrl + filename;
+			}
+			else {
+			   let wordViewer = "https://view.officeapps.live.com/op/embed.aspx?src="
+			   return wordViewer + productionUrl + filename;
+			}
+		    }
+		    else if (ext === "Rmd" || 
+			     ext === "html" ||
+			     ext === "pdf" ||
+			     ext === "ipynb")
+		    
+		    {
+			if(this.isLocalhost()) {
+			    let localhostUrl = this.localhostUrl();
+			    return localhostUrl + filename;
+			}
+			else {
+			    return productionUrl + filename;
+			}
+		    }
+		    else if(ext === "colab") {
+			let baseUrl = "https://colab.research.google.com/drive/";
+			let url = baseUrl + item.googleid; 
+			window.open(url, "_blank")
+		        return "opensInOtherWindow.html";
+		    }
+		    else if(ext === "googledoc") {
+			let baseUrl = "https://docs.google.com/document/d/";
+			let url = baseUrl + item.googleid; 
+			window.open(url, "_blank")
+		        return "opensInOtherWindow.html";
+		    }
 		}
 		else {
 		    console.log("updating page to null string");
@@ -133,20 +207,30 @@
 		}
 	    }
 	},
+     watch: {
+	 items: function(val) {
+	     console.log("wathcher")
+	      this.$nextTick(() => {
+		   console.log("trying to update all")
+		   this.$refs.mytreeview.updateAll(true);
+	      });
+	 }
+     },
      data: () => ({
 	  ipythonMode: "colab",
 	  drawer: null,
 	  key: null,
-	  open: [],
 	  active: [],
 	  files: {
 	    html: 'mdi-file-xml',
-	    md: 'mdi-markdown',
+	    Rmd: 'mdi-markdown',
 	    pdf: 'mdi-file-pdf',
 	    ipynb: 'mdi-file',
-	    docx: 'mdi-file-word'
+	    docx: 'mdi-file-word',
+	    colab: 'mdi-open-in-new',
+	    googledoc: 'mdi-open-in-new'
 	  },
-	 items: null 
+	 items: [] 
 	})
     })
   </script>

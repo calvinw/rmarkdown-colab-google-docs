@@ -1,5 +1,36 @@
 [
   {
+    "id": "SimpleR",
+    "name": "SimpleR",
+    "children": [
+      {
+        "id": "SimpleR.Rmd",
+        "name": "Rmd",
+        "file": "md"
+      },
+      {
+        "id": "SimpleR.html",
+        "name": "html",
+        "file": "html"
+      },
+      {
+        "id": "SimpleR.pdf",
+        "name": "pdf",
+        "file": "pdf"
+      },
+      {
+        "id": "SimpleR.ipynb",
+        "name": "ipynb",
+        "file": "ipynb"
+      },
+      {
+        "id": "SimpleR.docx",
+        "name": "docx",
+        "file": "docx"
+      }
+    ]
+  },
+  {
     "id": "Python",
     "name": "Python",
     "children": [
@@ -29,37 +60,6 @@
         "name": "docx",
         "file": "docx",
         "googleId": "1JEF1e4jk-gFu8Z4ze_jav5aPLW02CNLu"
-      }
-    ]
-  },
-  {
-    "id": "SimpleR",
-    "name": "SimpleR",
-    "children": [
-      {
-        "id": "SimpleR.Rmd",
-        "name": "Rmd",
-        "file": "md"
-      },
-      {
-        "id": "SimpleR.html",
-        "name": "html",
-        "file": "html"
-      },
-      {
-        "id": "SimpleR.pdf",
-        "name": "pdf",
-        "file": "pdf"
-      },
-      {
-        "id": "SimpleR.ipynb",
-        "name": "ipynb",
-        "file": "ipynb"
-      },
-      {
-        "id": "SimpleR.docx",
-        "name": "docx",
-        "file": "docx"
       }
     ]
   }

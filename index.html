@@ -20,7 +20,6 @@
 	  border: none;
 	}
   </style> 
-  <!-- <script src="json&#45;data.js"></script> -->
 </head>
 <body>
   <div id="app">
@@ -45,9 +44,6 @@
       <v-toolbar-title> {{page}}</v-toolbar-title>
     </v-toolbar>
     <v-content>
-	<!--     <div> -->
-	<!-- {{page}} -->
-	<!--     </div> -->
       <v-container fluid fill-height fill-width>
         <v-layout justify-center align-center >
 	   <iframe id="theIframe" :key="key" :src="page"></iframe>
@@ -115,20 +111,21 @@
 		    console.log("updating url: this.active[0] is: "+this.active[0]);
 		    let filename = this.active[0];
 		    const ext = filename.substring(filename.lastIndexOf('.')+1, filename.length)
-		    if(ext === "docx") {
-			if(location.hostname === 'localhost' || 
-			   location.hostname === '127.0.0.1') {
-			   return filename;
-			}
-			else {
-			  let wordViewer = "https://view.officeapps.live.com/op/embed.aspx?src="
-			  let docUrl = "https://calvinw.gitlab.io/rmarkdown-colab-google-docs/" + filename
-			  return wordViewer + docUrl;
-			}
+		    let localhostUrl = "http://localhost:3000/"
+		    if(location.hostname === 'localhost' || 
+		       location.hostname === '127.0.0.1') {
+		       return localhostUrl + filename;
+		    }
+
+		    let productionUrl = "https://calvinw.gitlab.io/rmarkdown-colab-google-docs/"
+		    if(ext != "docx") {
+		       return productionUrl + filename;
 		    }
 		    else {
-			return this.active[0];
+		       let wordViewer = "https://view.officeapps.live.com/op/embed.aspx?src="
+		       return wordViewer + productionUrl + filename;
 		    }
+
 		}
 		else {
 		    console.log("updating page to null string");

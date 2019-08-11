@@ -97,7 +97,7 @@ google-upload.js app does not create any Google Docs for you, just uploads and s
 Once you have your own versions of the google ids you want to use, you can upload the current built versions of the ipynb like this:
 
 ```bash
-node google-upload.js SimpleR.ipynb
+node google-upload.js rExample.ipynb
 ```
 
 This reads the googleid for the Colab document for SimpleR from google-colab-ids.json and uploads the SimpleR.ipynb to that file in your google drive. 
@@ -107,9 +107,15 @@ When you run this you will ask you to authenticate the app and allow it to acces
 For the docx version you can do this:
 
 ```bash
-node google-upload.js SimpleR.docx
+node google-upload.js rExample.docx
 ```
 
-This reads the googleid for the Docs document for SimpleR from google-docx-ids.json and uploads the SimpleR.docx to that file in your google drive. 
+This reads the googleid for the Docs document for rExample from google-docx-ids.json and uploads the rExample.docx to that file into google drive.
+
+In our case the files in google drive are at this link: 
+
+[Google Colab and Docs folder](https://drive.google.com/open?id=1eBAj6EFbtJpHDTqdA8UTdPzr-asPaSGH)
+
+These should be viewable by everyone, so you can take a look.
 
 See the Makefile for additional build details and targets.

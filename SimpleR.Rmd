@@ -1,0 +1,25 @@
+
+# Simple Rmarkdown 
+
+
+```{r}
+x<-3
+y<-4
+```
+
+Some inline r code: y is `r y`
+
+Some display math
+
+$$
+x = \frac{`r x`}{4} 
+$$
+
+
+```{r}
+cat("I am the king")
+```
+
+```{r}
+plot(runif(30))
+```

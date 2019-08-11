@@ -13,28 +13,11 @@ jupyter:
 source('setupReticulate.R')
 ```
 
-```{python}
-import pandas as pd
-url="http://www.salemmarafi.com/wp-content/uploads/2014/06/supermarket.csv"
-df=pd.read_csv(url)
-print(df)
-df.corr()
-```
-
 This illustrates how to generate python notebooks (for colab) from rmarkdown files.
 
 ```{python}
 import matplotlib.pyplot as plt
-import numpy as np
-
-t = np.arange(0.0, 15.0, 0.01)
-s = 1 + np.sin(2*np.pi*t)
-plt.plot(t, s)
-
-plt.xlabel('time is on our side (s)')
-plt.ylabel('voltage (mV)')
-plt.title('About as simple as it gets, folks')
-plt.grid(True)
+plt.plot([1,2,3,4], [1,4,9,16], 'ro')
 plt.show()
 ```
 
@@ -48,15 +31,18 @@ numerator = x-mu
 z = numerator/sigma
 print(z)
 ```
+
+Here is some inline code evaluations: x = `r py$x` and y = `r py$y` below:
+
+These are possible using R evaluation but reticulate gives us access in the R session to the python variables. I wish this could be done like this:
+
+x = `python x` and y = `python y`, maybe in the future. Colab does not support inline code evaluation as far as I can tell.
+
+Finally here is some display LaTeX with inline code evaluation. 
+
 $$
 z = \frac{x-\mu}{\sigma} 
   = \frac{`r py$x`-`r py$mu`}{`r py$sigma`} 
   = \frac{`r py$numerator`}{`r py$sigma`} 
   = `r py$z`
 $$
-
-Here is some latex code with inline evaluations: x = `r py$x` and y = `r py$y` below:
-$$ 
-z = x + y = `r py$x` + `r py$y` = `r py$x + py$y`
-$$
-

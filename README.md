@@ -1,6 +1,6 @@
-machine learning Rmds for Ma322
+This project shows Rmarkdown(Rmd) examples based on R and Python that can be converted to Google Colab notebooks and published and uploaded to Google Docs. We include pdf and docx versions of the examples as well. 
 
-Each Rmd file can be rendered to the following formats: 
+Each Rmd file can be rendered to all of the following formats if desired: 
 1. html
 1. pdf 
 1. md 
@@ -8,19 +8,42 @@ Each Rmd file can be rendered to the following formats:
 1. docx
 
 The ipynb files can be uploaded to google colab once they are created. 
+
 They are created by a command line tool called jupytext. 
 
 Jupytext allows converting from rmarkdown or (regular) markdown to ipynb formats.
 
-Jupyter must be installed as well since it is used to create the R kernel version of the ipynb formats.   
+Jupyter must be installed as well since it is used to create the R kernel version of the ipynb formats. Also the R kernel of Jupyter is used in the R versions of the ipynb colab formats. This kernel choice works in google colab, though it is not advertised yet.   
 
-To see what the project depends on look at the .gitlab-ci.yml file since that is a recipe to install pre-reqs for this project.
+To see what the project depends on look at the .gitlab-ci.yml file since that is a recipe to install pre-reqs for this project. Roughly the relevant section is here:
 
-Install jupyter and jupytext as follows:
->pip3 install jupyter  (or  sudo -H install jupyter to install systemwide)
->pip3 install jupytext (or  sudo -H install jupytext for systemwide)
+We install jupyter and jupytext to enable the conversions to ipynb format:
+
+>apt-get -y install python3-pip
+>pip3 install jupyter jupytext
+
+Then we need to install the R related packages we need:
+
+>apt-get -y install pandoc
+>wget -qO- "https://yihui.name/gh/tinytex/tools/install-unx.sh" | sh
+>Rscript -e "install.packages('rmarkdown')"
+
+Then we install the R kernel for jupyter (needed by jupytext to convert):
+
+>Rscript -e "install.packages('IRkernel')"
+>Rscript -e "IRkernel::installspec()"
+
+And we install reticulate to run Python engine in Rmd files:
+
+>Rscript -e "install.packages('reticulate')"
+
+And then install matplotlib for graphics in Python Rmds
+
+>pip3 install matplotlib
+
 
 Then from the command line build it this way: 
+
 >make 
 
 or from Rstudio choose the "Build All" menu from the Build tab

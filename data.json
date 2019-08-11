@@ -1,38 +1,5 @@
 [
   {
-    "id": "Elasticity",
-    "name": "Elasticity",
-    "children": [
-      {
-        "id": "Elasticity.Rmd",
-        "name": "Rmd",
-        "file": "md"
-      },
-      {
-        "id": "Elasticity.html",
-        "name": "html",
-        "file": "html"
-      },
-      {
-        "id": "Elasticity.pdf",
-        "name": "pdf",
-        "file": "pdf"
-      },
-      {
-        "id": "Elasticity.ipynb",
-        "name": "ipynb",
-        "file": "ipynb",
-        "googleId": "1Y-bK6MhZNFKRBBT5GILYbGOjPdpqpAop"
-      },
-      {
-        "id": "Elasticity.docx",
-        "name": "docx",
-        "file": "docx",
-        "googleId": "1fItZjEXgRxiTu77KUDoCLEhnfCV-TCG-2CbiG3naaEs"
-      }
-    ]
-  },
-  {
     "id": "Python",
     "name": "Python",
     "children": [
@@ -66,66 +33,33 @@
     ]
   },
   {
-    "id": "Simple",
-    "name": "Simple",
+    "id": "SimpleR",
+    "name": "SimpleR",
     "children": [
       {
-        "id": "Simple.Rmd",
+        "id": "SimpleR.Rmd",
         "name": "Rmd",
         "file": "md"
       },
       {
-        "id": "Simple.html",
+        "id": "SimpleR.html",
         "name": "html",
         "file": "html"
       },
       {
-        "id": "Simple.pdf",
+        "id": "SimpleR.pdf",
         "name": "pdf",
         "file": "pdf"
       },
       {
-        "id": "Simple.ipynb",
+        "id": "SimpleR.ipynb",
         "name": "ipynb",
         "file": "ipynb"
       },
       {
-        "id": "Simple.docx",
+        "id": "SimpleR.docx",
         "name": "docx",
         "file": "docx"
-      }
-    ]
-  },
-  {
-    "id": "Webscraping",
-    "name": "Webscraping",
-    "children": [
-      {
-        "id": "Webscraping.Rmd",
-        "name": "Rmd",
-        "file": "md"
-      },
-      {
-        "id": "Webscraping.html",
-        "name": "html",
-        "file": "html"
-      },
-      {
-        "id": "Webscraping.pdf",
-        "name": "pdf",
-        "file": "pdf"
-      },
-      {
-        "id": "Webscraping.ipynb",
-        "name": "ipynb",
-        "file": "ipynb",
-        "googleId": "1s1I1ujfB21_JDPecLl49STBxPAUznViZ"
-      },
-      {
-        "id": "Webscraping.docx",
-        "name": "docx",
-        "file": "docx",
-        "googleId": ""
       }
     ]
   }

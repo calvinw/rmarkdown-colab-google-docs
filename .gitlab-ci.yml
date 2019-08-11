@@ -4,18 +4,11 @@ pages:
   stage: deploy
   script:
   - apt-get update
-  - apt-get -y install libcurl4-openssl-dev libxml2-dev libssl-dev pandoc python3-pip
-  - pip3 install jupyter
-  - pip3 install jupytext --upgrade
-  - pip3 install matplotlib
-  - pip3 install pandas 
-  - pip3 install numpy 
+  - apt-get -y install python3-pip
+  - pip3 install jupyter jupytext matplotlib
+  - apt-get -y install pandoc
   - wget -qO- "https://yihui.name/gh/tinytex/tools/install-unx.sh" | sh
   - Rscript -e "install.packages('rmarkdown')"
-  - Rscript -e "install.packages('rvest')"
-  - Rscript -e "install.packages('RCurl')"
-  - Rscript -e "install.packages('C50')"
-  - Rscript -e "install.packages('rpart')"
   - Rscript -e "install.packages('reticulate')"
   - Rscript -e "install.packages('IRkernel')"
   - Rscript -e "IRkernel::installspec()"

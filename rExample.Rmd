@@ -2,9 +2,9 @@
 title: "Simple R Example"
 jupyter:
   kernelspec:
-    display_name: R 
-    language: R 
-    name: ir 
+    display_name: R
+    language: R
+    name: ir
 ---
 
 Here is some simple R.

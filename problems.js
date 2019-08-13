@@ -1,6 +1,5 @@
 var fs = require('fs');
 var path = require('path');
-var yaml = require('js-yaml');
 var dirPath = path.resolve(__dirname); // path to your directory goes here
 var filesList;
 fs.readdir(dirPath, function(err, files){

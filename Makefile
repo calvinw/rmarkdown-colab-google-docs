@@ -9,8 +9,8 @@ IPYNB_FILES = $(SOURCES:%.Rmd=%.ipynb)
 PDF_FILES = $(SOURCES:%.Rmd=%.pdf)
 DOCX_FILES = $(SOURCES:%.Rmd=%.docx)
 
-UPDATE_COLAB=false
-UPDATE_GOOGLEDOCS=false
+COLAB_UPLOADS=
+GOOGLEDOC_UPLOADS=
 
 export PATH :=.:/bin:/usr/bin:$(PATH)
 export RETICULATE_PYTHON=/usr/bin/python3
@@ -45,22 +45,15 @@ endif
 	@echo Calling render for docx...	
 	Rscript -e 'rmarkdown::render("$<", "word_document")'
 	@echo docx render is finished...	
-ifeq ($(UPDATE_GOOGLEDOCS),true)
-	node google-upload.js $@
-endif
+	$(if $(findstring $@, $(GOOGLEDOC_UPLOADS)), node google-upload.js $@)
 
 %.ipynb : %.md
-	$(eval rname=$(findstring $*,$(R_SOURCES)))
-	$(eval pyname=$(findstring $*,$(PYTHON_SOURCES)))
-	@if [ $* = "$(rname)" ]; then \
-	    jupytext $< --to notebook --set-kernel ir; \
-	elif [ $* = "$(pyname)" ]; then \
-	    jupytext $< --to notebook --set-kernel python3; \
-	fi;
+	$(if $(findstring $*, $(R_SOURCES)), \
+	    jupytext $< --to notebook --set-kernel ir)
+	$(if $(findstring $*, $(PYTHON_SOURCES)), \
+	    jupytext $< --to notebook --set-kernel python3)
 	@echo ipynb render is finished...
-ifeq ($(UPDATE_COLAB),true) 
-	node google-upload.js $@
-endif
+	$(if $(findstring $@, $(COLAB_UPLOADS)), node google-upload.js $@)
 
 data: 
 	node problems.js > data.json

@@ -1,7 +1,5 @@
 SHELL:=/bin/bash
-PYTHON_SOURCES=$(shell find . -name "py*.Rmd")
-R_SOURCES=$(shell find . -name "*.Rmd" ! -name "py*.Rmd")
-SOURCES = $(R_SOURCES) $(PYTHON_SOURCES)
+SOURCES=$(shell find . -name "*.Rmd")
 
 HTML_FILES = $(SOURCES:%.Rmd=%.html)
 MD_FILES = $(SOURCES:%.Rmd=%.md)
@@ -21,42 +19,34 @@ all : $(HTML_FILES) $(PDF_FILES) $(IPYNB_FILES) $(MD_FILES) $(DOCX_FILES)
 clean :
 	@echo Removing html, md, pdf, docx and ipynb files...	
 	rm -f $(HTML_FILES) $(PDF_FILES) $(IPYNB_FILES) $(MD_FILES) $(DOCX_FILES)
+	rm -rf *_files 
 
 %.html : %.Rmd
-	@echo Calling render for html..
-	Rscript -e 'rmarkdown::render("$<", "html_document")'
-	@echo html render is finished...	
+	@Rscript renderRmd.R $< html_document
 ifdef SERVER
 	@echo Send message to browser to reload html $@ ...
 	-echo $@ | nc -q .01 localhost 4000
 endif
 
 %.md : %.Rmd
-	@echo Calling render for md...
-	Rscript rendermd.R $< $@
-	@echo md render is finished...
+	@Rscript renderRmdToMd.R $<
+	@sed -i 's/``` r/``` code/g' $@
+	@sed -i 's/``` python/```code/g' $@
 
 %.pdf : %.Rmd
-	@echo Calling render for pdf...	
-	Rscript -e 'rmarkdown::render("$<", "pdf_document")'
-	@echo pdf render is finished...	
+	@Rscript renderRmd.R $< pdf_document
 
 %.docx : %.Rmd
-	@echo Calling render for docx...	
-	Rscript -e 'rmarkdown::render("$<", "word_document")'
-	@echo docx render is finished...	
+	@Rscript renderRmd.R $< word_document
 	$(if $(findstring $@, $(GOOGLEDOC_UPLOADS)), node google-upload.js $@)
 
 %.ipynb : %.md
-	$(if $(findstring $*, $(R_SOURCES)), \
-	    jupytext $< --to notebook --set-kernel ir)
-	$(if $(findstring $*, $(PYTHON_SOURCES)), \
-	    jupytext $< --to notebook --set-kernel python3)
-	@echo ipynb render is finished...
+	@echo Calling render for ipynb...	
+	pandoc $< -o $@
 	$(if $(findstring $@, $(COLAB_UPLOADS)), node google-upload.js $@)
 
 data: 
-	node problems.js > data.json
+	node problems.js > document-data.json
 
 server:
 	make -j watch nodeapp

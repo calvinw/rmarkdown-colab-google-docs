@@ -3,6 +3,7 @@
 .RData
 .Ruserdata
 *.html
+*_files
 !header.html
 !index.html
 !page.html

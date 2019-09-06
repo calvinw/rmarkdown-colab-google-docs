@@ -21,6 +21,9 @@ if ("matplotlib.backends" %in% names(sys$modules)) {
 }
 ```
 
+```{python eval=FALSE}
+%matplotlib inline
+```
 
 This illustrates how to generate python notebooks (for colab) from rmarkdown files.
 

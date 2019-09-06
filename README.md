@@ -20,12 +20,20 @@ We currently mirror this repo to a [github repo](https://github.com/calvinw/mach
 
 The R kernel of Jupyter is used in the R versions of the ipynb Colab formats. This kernel choice works in Google Colab, though it is not advertised yet.   
 
-To see what the project depends on look at the .gitlab-ci.yml file since that is a recipe to install pre-reqs for this project. Roughly the relevant things to install are as follows:
+To see what the project depends on look at the .gitlab-ci.yml file since that is a recipe to install pre-reqs for this project. Roughly the relevant things to install include for Python python3-pip, matplotlib, then for rendering and for R weneed a recent pandoc, some TeX tools (we use tinytex) and reticulate. 
 
 ```bash
+  - apt-get update
+  - apt-get -y install python3-pip
+  - pip3 install matplotlib
+  - wget "https://github.com/jgm/pandoc/releases/download/2.7.3/pandoc-2.7.3-1-amd64.deb"
+  - dpkg -i pandoc-2.7.3-1-amd64.deb
+  - wget -qO- "https://yihui.name/gh/tinytex/tools/install-unx.sh" | sh
+  - Rscript -e "install.packages('rmarkdown')"
+  - Rscript -e "install.packages('reticulate')"
 ```
 
-Install the R kernel for jupyter (needed by jupytext to convert):
+Then once you are ready, just run make:
 
 ```bash
 make 

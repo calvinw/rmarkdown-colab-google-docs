@@ -8,7 +8,7 @@ PDF_FILES = $(SOURCES:%.Rmd=%.pdf)
 DOCX_FILES = $(SOURCES:%.Rmd=%.docx)
 
 GOOGLEDOC_UPLOADS=
-GOOGLEDOC_UPLOADS= pyExample.docx rExample.docx
+#GOOGLEDOC_UPLOADS= pyExample.docx rExample.docx
 
 export PATH :=.:/bin:/usr/bin:$(PATH)
 export RETICULATE_PYTHON=/usr/bin/python3

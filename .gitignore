@@ -9,7 +9,10 @@
 !page.html
 !opensInOtherWindow.html
 *.pdf
+*.md
+*.docx
 *.local
+!README.md
 lsAll
 allFiles
 node_modules/*

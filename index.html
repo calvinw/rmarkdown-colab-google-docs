@@ -47,9 +47,6 @@
       <v-container fluid fill-height fill-width>
         <v-layout justify-center align-center >
 	   <iframe id="theIframe" :key="key" :src="page"></iframe>
-	   <!-- <iframe src="https://view.officeapps.live.com/op/embed.aspx?src=https://file.io/8cuoLJ"></iframe> -->
-	   <!-- <iframe src="https://docs.google.com/gview?url=https://file.io/jFytdJ"></iframe> -->
-
         </v-layout>
       </v-container>
     </v-content>
@@ -71,8 +68,9 @@
 	      socket.on("load-event", function (filename) {
 		console.log("got the load event: " + filename);
 		  Vue.set(self.active, 0, filename)
-		  self.key = Date.now();
+		  //self.key = Date.now();
 		  window.scrollTo(0, document.body.scrollHeight);
+		  location.reload();
 	      });
 
 	      console.log("loading json items data");
@@ -90,19 +88,6 @@
 	      })
 	  },
 	methods: { 
-	    clicked: function(item) {
-		console.log("I was clicked");
-		if(item.file === 'ipynb') {
-		    if(this.ipythonMode === "jupyter")
-			window.open("http://localhost:8888/notebooks/" +item.name);
-		    else if(this.ipythonMode === "colab") {
-			window.open("https://colab.research.google.com/drive/" + item.googleId)
-		    }
-		}
-		else if(item.file === 'docx') {
-		   window.open("https://docs.google.com/document/d/" + item.googleId +"/edit")
-		}
-	    },
 	    isLocalhost: function() {
 		    if( location.hostname === '' ||
 		        location.hostname === 'localhost' ||
@@ -189,17 +174,23 @@
 			}
 		    }
 		    else if(ext === "colab") {
-			let baseUrl = "https://colab.research.google.com/drive/";
-			let url = baseUrl + item.googleid; 
+			let baseUrl = "https://colab.research.google.com/github/calvinw/rmarkdown-colab-google-docs/blob/master/";
+			let url = baseUrl + item.name + ".ipynb"; 
 			window.open(url, "_blank")
 		        return "opensInOtherWindow.html";
 		    }
-		    else if(ext === "googledoc") {
+   		    else if(ext === "googledoc") {
 			let baseUrl = "https://docs.google.com/document/d/";
 			let url = baseUrl + item.googleid; 
 			window.open(url, "_blank")
 		        return "opensInOtherWindow.html";
 		    }
+		     else if(ext === "binder") {
+			 let baseUrl = "https://mybinder.org/v2/gh/calvinw/rmarkdown-colab-google-docs/master?filepath=";
+			 let url = baseUrl + item.name + ".ipynb"; 
+			 window.open(url, "_blank")
+		         return "opensInOtherWindow.html";
+		     }
 		}
 		else {
 		    console.log("updating page to null string");
@@ -209,11 +200,9 @@
 	},
      watch: {
 	 items: function(val) {
-	     console.log("wathcher")
-	      this.$nextTick(() => {
-		   console.log("trying to update all")
-		   this.$refs.mytreeview.updateAll(true);
-	      });
+	      // this.$nextTick(() => {
+		//    this.$refs.mytreeview.updateAll(true);
+	      // });
 	 }
      },
      data: () => ({
@@ -228,6 +217,7 @@
 	    ipynb: 'mdi-file',
 	    docx: 'mdi-file-word',
 	    colab: 'mdi-open-in-new',
+	    binder: 'mdi-open-in-new',
 	    googledoc: 'mdi-open-in-new'
 	  },
 	 items: [] 

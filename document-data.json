@@ -35,31 +35,31 @@
         ]
       },
       {
-        "id": 12,
+        "id": 13,
         "name": "pyExample",
         "children": [
           {
-            "id": 13,
+            "id": 14,
             "name": "pyExample.Rmd",
             "file": "Rmd"
           },
           {
-            "id": 14,
+            "id": 15,
             "name": "pyExample.html",
             "file": "html"
           },
           {
-            "id": 15,
+            "id": 16,
             "name": "pyExample.pdf",
             "file": "pdf"
           },
           {
-            "id": 16,
+            "id": 17,
             "name": "pyExample.ipynb",
             "file": "ipynb"
           },
           {
-            "id": 17,
+            "id": 18,
             "name": "pyExample.docx",
             "file": "docx"
           }
@@ -74,14 +74,28 @@
       {
         "id": 10,
         "name": "rExample",
-        "file": "colab",
-        "googleid": "1-bO6yPeycG57jtEeeipCCzvyiMq4-3B4"
+        "file": "colab"
       },
       {
-        "id": 18,
+        "id": 19,
         "name": "pyExample",
-        "file": "colab",
-        "googleid": "1mMzQMiv91zgnYsl1rZl-x_3gQLbNMoqN"
+        "file": "colab"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Binder Links",
+    "children": [
+      {
+        "id": 12,
+        "name": "rExample",
+        "file": "binder"
+      },
+      {
+        "id": 21,
+        "name": "pyExample",
+        "file": "binder"
       }
     ]
   },
@@ -96,7 +110,7 @@
         "googleid": "1H-ULuoAlGGtqM-hClTCSi5PVltex2oDp"
       },
       {
-        "id": 19,
+        "id": 20,
         "name": "pyExample",
         "file": "googledoc",
         "googleid": "1JEF1e4jk-gFu8Z4ze_jav5aPLW02CNLu"

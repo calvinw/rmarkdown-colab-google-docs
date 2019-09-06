@@ -8,6 +8,7 @@ PDF_FILES = $(SOURCES:%.Rmd=%.pdf)
 DOCX_FILES = $(SOURCES:%.Rmd=%.docx)
 
 GOOGLEDOC_UPLOADS=
+GOOGLEDOC_UPLOADS= pyExample.docx rExample.docx
 
 export PATH :=.:/bin:/usr/bin:$(PATH)
 export RETICULATE_PYTHON=/usr/bin/python3
@@ -40,7 +41,6 @@ endif
 	$(if $(findstring $@, $(GOOGLEDOC_UPLOADS)), node google-upload.js $@)
 
 %.ipynb : %.md
-	@echo Calling render for ipynb...	
 	pandoc $< -o $@
 
 data: 

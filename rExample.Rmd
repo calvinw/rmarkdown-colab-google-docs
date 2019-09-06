@@ -15,7 +15,7 @@ y<-12
 
 Some inline r code: y is `r y`
 
-Some display math
+    Some display math with inline code as well
 
 $$
 x = \frac{`r 2*x`}{`r y`} 

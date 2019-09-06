@@ -85,17 +85,17 @@
   },
   {
     "id": 2,
-    "name": "Binder Links",
+    "name": "Jupyter Links",
     "children": [
       {
         "id": 12,
         "name": "rExample",
-        "file": "binder"
+        "file": "jupyter"
       },
       {
         "id": 21,
         "name": "pyExample",
-        "file": "binder"
+        "file": "jupyter"
       }
     ]
   },

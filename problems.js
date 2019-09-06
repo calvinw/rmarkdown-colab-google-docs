@@ -12,7 +12,7 @@ fs.readdir(dirPath, function(err, files){
     var filesArray = [];
     var colabsArray = [];
     var docsArray = [];
-    var bindersArray = [];
+    var jupyterArray = [];
   //console.log(filesList);
     //
     let googledocxidsdata = fs.readFileSync('google-docx-ids.json');
@@ -59,12 +59,12 @@ fs.readdir(dirPath, function(err, files){
 	};
 	docsArray.push(docItem);
 
-	var binderItem = {
+	var jupyterItem = {
 	     id: id++, 
 	     name: name, 
-	     file: 'binder'
+	     file: 'jupyter'
 	};
-	bindersArray.push(binderItem);
+	jupyterArray.push(jupyterItem);
     }
 
     let myJson = [ 
@@ -80,8 +80,8 @@ fs.readdir(dirPath, function(err, files){
 	},
 	{
 	    id: 2,
-	    name: "Binder Links",
-	    children: bindersArray 
+	    name: "Jupyter Links",
+	    children: jupyterArray 
 	},
 	{
 	    id: 3,

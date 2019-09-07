@@ -8,6 +8,7 @@ jupyter:
 ---
 ```{r include=FALSE}
 library("reticulate")
+# This is needed to use matplotlib in reticulated python  
 matplotlib <- import("matplotlib", convert = TRUE)
 matplotlib$use("agg", warn = FALSE, force = TRUE)
 ```

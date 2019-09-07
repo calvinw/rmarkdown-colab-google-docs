@@ -8,7 +8,7 @@ fs.readdir(dirPath, function(err, files){
   });
 
     filesList = filesList.reverse();
-    var id = 4;
+    var id = 10;
     var filesArray = [];
     var colabsArray = [];
     var docsArray = [];
@@ -79,12 +79,12 @@ fs.readdir(dirPath, function(err, files){
 	    children: colabsArray 
 	},
 	{
-	    id: 2,
+	    id: 3,
 	    name: "Jupyter Links",
 	    children: jupyterArray 
 	},
 	{
-	    id: 3,
+	    id: 4,
 	    name: "GoogleDoc Links",
 	    children: docsArray 
 	}

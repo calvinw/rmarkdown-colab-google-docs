@@ -6,47 +6,28 @@ jupyter:
     language: python
     name: python3
 ---
-```{r include=FALSE}
-library("reticulate")
-# This is needed to use matplotlib in reticulated python  
-matplotlib <- import("matplotlib", convert = TRUE)
-matplotlib$use("agg", warn = FALSE, force = TRUE)
-```
+
+This illustrates how to generate python notebooks (for colab) from rmarkdown files.
+This is in case it is running in a notebook:
 
 ```{python eval=FALSE}
 %matplotlib inline
 ```
 
-This illustrates how to generate python notebooks (for colab) from rmarkdown files.
+Here is some Latex
+
+$$ x = \frac{2}{3} $$
 
 ```{python}
 import matplotlib.pyplot as plt
-plt.plot([3,4,3,5,7,4,3,2,3,4],[16,9,12,3,4,3,5,7,4,3], 'o')
+plt.plot([32,31,2,3,5,32],[32,23,3,4,4,32], "o")
 plt.show()
 ```
 
 Lets compute a z-score:
 ```{python}
-x = 521 
-y = 32
-mu = 4
-sigma = 7
-numerator = x-mu
-z = numerator/sigma
-print(z)
+import numpy as np
+np.__version__
+y = 32 
+print(y)
 ```
-
-Here is some inline code evaluations: x = `r py$x` and y = `r py$y` below:
-
-These are possible using R evaluation but reticulate gives us access in the R session to the python variables. I wish this could be done like this:
-
-x = `python x` and y = `python y`, maybe in the future. Colab does not support inline code evaluation as far as I can tell.
-
-Finally here is some display LaTeX with inline code evaluation. 
-
-$$
-z = \frac{x-\mu}{\sigma} 
-  = \frac{`r py$x`-`r py$mu`}{`r py$sigma`} 
-  = \frac{`r py$numerator`}{`r py$sigma`} 
-  = `r py$z`
-$$

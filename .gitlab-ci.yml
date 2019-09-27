@@ -6,9 +6,12 @@ pages:
   - apt-get update
   - apt-get -y install python3-pip
   - pip3 install matplotlib
+  - pip3 install numpy 
+  - pip3 install pandas 
   - wget "https://github.com/jgm/pandoc/releases/download/2.7.3/pandoc-2.7.3-1-amd64.deb"
   - dpkg -i pandoc-2.7.3-1-amd64.deb
   - wget -qO- "https://yihui.name/gh/tinytex/tools/install-unx.sh" | sh
+  - Rscript -e "install.packages('knitr')"
   - Rscript -e "install.packages('rmarkdown')"
   - Rscript -e "install.packages('reticulate')"
   - make

@@ -4,62 +4,93 @@
     "name": "Files",
     "children": [
       {
-        "id": 4,
+        "id": 10,
         "name": "rExample",
         "children": [
           {
-            "id": 5,
+            "id": 11,
             "name": "rExample.Rmd",
             "file": "Rmd"
           },
           {
-            "id": 6,
+            "id": 12,
             "name": "rExample.html",
             "file": "html"
           },
           {
-            "id": 7,
+            "id": 13,
             "name": "rExample.pdf",
             "file": "pdf"
           },
           {
-            "id": 8,
+            "id": 14,
             "name": "rExample.ipynb",
             "file": "ipynb"
           },
           {
-            "id": 9,
+            "id": 15,
             "name": "rExample.docx",
             "file": "docx"
           }
         ]
       },
       {
-        "id": 13,
+        "id": 19,
+        "name": "pyReticulate",
+        "children": [
+          {
+            "id": 20,
+            "name": "pyReticulate.Rmd",
+            "file": "Rmd"
+          },
+          {
+            "id": 21,
+            "name": "pyReticulate.html",
+            "file": "html"
+          },
+          {
+            "id": 22,
+            "name": "pyReticulate.pdf",
+            "file": "pdf"
+          },
+          {
+            "id": 23,
+            "name": "pyReticulate.ipynb",
+            "file": "ipynb"
+          },
+          {
+            "id": 24,
+            "name": "pyReticulate.docx",
+            "file": "docx"
+          }
+        ]
+      },
+      {
+        "id": 28,
         "name": "pyExample",
         "children": [
           {
-            "id": 14,
+            "id": 29,
             "name": "pyExample.Rmd",
             "file": "Rmd"
           },
           {
-            "id": 15,
+            "id": 30,
             "name": "pyExample.html",
             "file": "html"
           },
           {
-            "id": 16,
+            "id": 31,
             "name": "pyExample.pdf",
             "file": "pdf"
           },
           {
-            "id": 17,
+            "id": 32,
             "name": "pyExample.ipynb",
             "file": "ipynb"
           },
           {
-            "id": 18,
+            "id": 33,
             "name": "pyExample.docx",
             "file": "docx"
           }
@@ -72,45 +103,60 @@
     "name": "Colab Links",
     "children": [
       {
-        "id": 10,
+        "id": 16,
         "name": "rExample",
         "file": "colab"
       },
       {
-        "id": 19,
-        "name": "pyExample",
+        "id": 25,
+        "name": "pyReticulate",
         "file": "colab"
-      }
-    ]
-  },
-  {
-    "id": 2,
-    "name": "Jupyter Links",
-    "children": [
-      {
-        "id": 12,
-        "name": "rExample",
-        "file": "jupyter"
       },
       {
-        "id": 21,
+        "id": 34,
         "name": "pyExample",
-        "file": "jupyter"
+        "file": "colab"
       }
     ]
   },
   {
     "id": 3,
+    "name": "Jupyter Links",
+    "children": [
+      {
+        "id": 18,
+        "name": "rExample",
+        "file": "jupyter"
+      },
+      {
+        "id": 27,
+        "name": "pyReticulate",
+        "file": "jupyter"
+      },
+      {
+        "id": 36,
+        "name": "pyExample",
+        "file": "jupyter"
+      }
+    ]
+  },
+  {
+    "id": 4,
     "name": "GoogleDoc Links",
     "children": [
       {
-        "id": 11,
+        "id": 17,
         "name": "rExample",
         "file": "googledoc",
         "googleid": "1H-ULuoAlGGtqM-hClTCSi5PVltex2oDp"
       },
       {
-        "id": 20,
+        "id": 26,
+        "name": "pyReticulate",
+        "file": "googledoc"
+      },
+      {
+        "id": 35,
         "name": "pyExample",
         "file": "googledoc",
         "googleid": "1JEF1e4jk-gFu8Z4ze_jav5aPLW02CNLu"

@@ -1,0 +1,27 @@
+Install a recent version of pandoc. We used 2.9.1.
+You can download a .deb file for pandoc from here:
+
+https://github.com/jgm/pandoc/releases
+
+From a bash shell:
+# sudo dpkg -i pandoc-2.9.1-1-amd64.deb
+
+From R install knitr, rmarkdown and a LaTeX distribution (if you do not already have one):
+
+> install.packages("knitr")
+> install.packages("rmarkdown")
+> install.packages("tinytex")
+> tinytex::install_tinytex()
+
+For python3 development, you will need to install:
+
+# sudo apt-get install python3 python3-pip
+# sudo apt-get install python3-numpy python3-matplotlib python3-pandas 
+# sudo apt-get install python3-tk
+
+
+
+
+
+
+

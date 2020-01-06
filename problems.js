@@ -11,12 +11,9 @@ fs.readdir(dirPath, function(err, files){
     var id = 10;
     var filesArray = [];
     var colabsArray = [];
-    var docsArray = [];
     var jupyterArray = [];
   //console.log(filesList);
     //
-    let googledocxidsdata = fs.readFileSync('google-docx-ids.json');
-    let googledocxids = JSON.parse(googledocxidsdata);
 
     for(f of filesList){
       var parsed = path.parse(f);
@@ -26,10 +23,7 @@ fs.readdir(dirPath, function(err, files){
       var rmdFile = name + '.Rmd'
       var pdfFile = name + '.pdf'
       var ipynbFile = name + '.ipynb'
-      var docxFile = name + '.docx'
 	
-      var googledocxId = googledocxids[name]; 
-
 	var fileItem = {
 	  id: id++,
 	  name: name,
@@ -37,8 +31,7 @@ fs.readdir(dirPath, function(err, files){
 	    { id: id++, name: rmdFile, file: 'Rmd' },
 	    { id: id++, name: htmlFile, file: 'html' },
 	    { id: id++, name: pdfFile, file: 'pdf'},
-	    { id: id++, name: ipynbFile, file: 'ipynb'},
-	    { id: id++, name: docxFile, file: 'docx'}
+	    { id: id++, name: ipynbFile, file: 'ipynb'}
 	  ]
 	};
 
@@ -50,14 +43,6 @@ fs.readdir(dirPath, function(err, files){
 	     file: 'colab'
 	};
 	colabsArray.push(colabItem);
-
-	var docItem = {
-	     id: id++, 
-	     name: name, 
-	     file: 'googledoc', 
-	     googleid: googledocxId,
-	};
-	docsArray.push(docItem);
 
 	var jupyterItem = {
 	     id: id++, 
@@ -82,11 +67,6 @@ fs.readdir(dirPath, function(err, files){
 	    id: 3,
 	    name: "Jupyter Links",
 	    children: jupyterArray 
-	},
-	{
-	    id: 4,
-	    name: "GoogleDoc Links",
-	    children: docsArray 
 	}
     ];
 		    

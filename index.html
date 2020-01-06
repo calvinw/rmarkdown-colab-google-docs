@@ -53,7 +53,6 @@
   </v-app>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/socket.io-client@2.2.0/dist/socket.io.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vuetify@1.x/dist/vuetify.js"></script>
 
@@ -61,31 +60,103 @@
     let vm = new Vue({
       el: '#app',
 	  created: function () {
-	      console.log("preparing socket io");
-
+	      console.log("in created");
 	      var self = this;
-	      var socket = io();
-	      socket.on("load-event", function (filename) {
-		console.log("got the load event: " + filename);
-		  Vue.set(self.active, 0, filename)
-		  //self.key = Date.now();
-		  window.scrollTo(0, document.body.scrollHeight);
-		  location.reload();
-	      });
-
 	      console.log("loading json items data");
-	      fetch('./document-data.json')
-	      .then(response => {
-		return response.json()
-	      })
-	      .then(data => {
-		// Work with JSON data here
-		console.log(data)
-		self.items = data;
-	      })
-	      .catch(err => {
-	        console.log("there was an error reading items json");
-	      })
+	      self.items = 
+[
+  {
+    "id": 1,
+    "name": "Files",
+    "children": [
+      {
+        "id": 17,
+        "name": "rExample",
+        "children": [
+          {
+            "id": 18,
+            "name": "rExample.Rmd",
+            "file": "Rmd"
+          },
+          {
+            "id": 19,
+            "name": "rExample.html",
+            "file": "html"
+          },
+          {
+            "id": 20,
+            "name": "rExample.pdf",
+            "file": "pdf"
+          },
+          {
+            "id": 21,
+            "name": "rExample.ipynb",
+            "file": "ipynb"
+          }
+        ]
+      },
+      {
+        "id": 24,
+        "name": "pyExample",
+        "children": [
+          {
+            "id": 25,
+            "name": "pyExample.Rmd",
+            "file": "Rmd"
+          },
+          {
+            "id": 26,
+            "name": "pyExample.html",
+            "file": "html"
+          },
+          {
+            "id": 27,
+            "name": "pyExample.pdf",
+            "file": "pdf"
+          },
+          {
+            "id": 28,
+            "name": "pyExample.ipynb",
+            "file": "ipynb"
+          }
+        ]
+      }
+   ]
+  },
+  {
+    "id": 2,
+    "name": "Colab Links",
+    "children": [
+      {
+        "id": 22,
+        "name": "rExample",
+        "file": "colab"
+      },
+      {
+        "id": 29,
+        "name": "pyExample",
+        "file": "colab"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Jupyter Links",
+    "children": [
+      {
+        "id": 23,
+        "name": "rExample",
+        "file": "jupyter"
+      },
+      {
+        "id": 30,
+        "name": "pyExample",
+        "file": "jupyter"
+      }
+    ]
+  }
+];
+
 	  },
 	methods: { 
 	    isLocalhost: function() {
@@ -148,18 +219,7 @@
 
 		    //Try to determine if we are running in development mode 
 		    let productionUrl = "https://calvinw.gitlab.io/rmarkdown-colab-google-docs/"
-		    if(ext === "docx") {
-
-			if(this.isLocalhost()) {
-			    let localhostUrl = this.localhostUrl();
-			    return localhostUrl + filename;
-			}
-			else {
-			   let wordViewer = "https://view.officeapps.live.com/op/embed.aspx?src="
-			   return wordViewer + productionUrl + filename;
-			}
-		    }
-		    else if (ext === "Rmd" || 
+		    if (ext === "Rmd" || 
 			     ext === "html" ||
 			     ext === "pdf" ||
 			     ext === "ipynb")
@@ -179,14 +239,7 @@
 			window.open(url, "_blank")
 		        return "opensInOtherWindow.html";
 		    }
-   		    else if(ext === "googledoc") {
-			let baseUrl = "https://docs.google.com/document/d/";
-			let url = baseUrl + item.googleid; 
-			window.open(url, "_blank")
-		        return "opensInOtherWindow.html";
-		    }
 		     else if(ext === "jupyter") {
-			 //let baseUrl = "https://mybinder.org/v2/gh/calvinw/rmarkdown-colab-google-docs/master?filepath=";
 			 let baseUrl = "https://nbviewer.jupyter.org/github/calvinw/rmarkdown-colab-google-docs/blob/master/"
 			 let url = baseUrl + item.name + ".ipynb"; 
 			 window.open(url, "_blank")
@@ -216,10 +269,8 @@
 	    Rmd: 'mdi-markdown',
 	    pdf: 'mdi-file-pdf',
 	    ipynb: 'mdi-file',
-	    docx: 'mdi-file-word',
 	    colab: 'mdi-open-in-new',
-	    jupyter: 'mdi-open-in-new',
-	    googledoc: 'mdi-open-in-new'
+	    jupyter: 'mdi-open-in-new'
 	  },
 	 items: [] 
 	})

@@ -1,5 +1,5 @@
 ---
-title: "Simple R Example"
+title: "R Example"
 jupyter:
   kernelspec:
     display_name: R
@@ -7,24 +7,19 @@ jupyter:
     name: ir
 ---
 
-Here is some simple R.
+Here is some R:
 ```{r}
 x<-23
 y<-12
+x+y
 ```
-
-Some inline r code: y is `r y`
-
-    Some display math with inline code as well
+Some display math:
 
 $$
-x = \frac{`r 2*x`}{`r y`} 
+x = \frac{2}{3} 
 $$
 
-
-```{r}
-cat("I am the king")
-```
+Some graphics
 
 ```{r}
 plot(runif(50))

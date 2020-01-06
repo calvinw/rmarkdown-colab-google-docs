@@ -7,19 +7,21 @@ jupyter:
     name: python3
 ---
 
-This is needed to run in colab or jupyter notebook:
 
-```{python eval=FALSE}
-%matplotlib inline
+```{python}
+import sys
+print(sys.version)
 ```
 
 Declare some variables here:
 
 ```{python}
 x = 4.34
+print(x)
 ```
 
 Just to make sure variables are still available to other code blocks
+(This comes from using reticulate)
 
 ```{python}
 print(x)
@@ -45,7 +47,12 @@ Here is some LaTeX:
 
 $$ x = \frac{2}{3} $$
 
-And here is some graphics using matplotlib:
+The following is needed to run matplotlib in a notebook, but dont evaluate it:
+
+```{r eval=FALSE}
+%matplotlib inline
+```
+Here is some graphics then:
 
 ```{python}
 import matplotlib.pyplot as plt

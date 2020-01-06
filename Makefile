@@ -7,7 +7,6 @@ IPYNB_FILES = $(SOURCES:%.Rmd=%.ipynb)
 PDF_FILES = $(SOURCES:%.Rmd=%.pdf)
 
 export PATH :=.:/bin:/usr/bin:$(PATH)
-#export RETICULATE_PYTHON=/usr/bin/python3
 
 all : $(HTML_FILES) $(PDF_FILES) $(IPYNB_FILES) $(MD_FILES)
 	@echo All files are now up to date

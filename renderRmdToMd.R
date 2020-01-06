@@ -11,7 +11,7 @@ library(rmarkdown)
 rmdFile<-args[1]
 
 opts_knit[["set"]](progress = FALSE); 
-opts_chunk[["set"]](results="hide", fig.show="hide", message=FALSE, warning=FALSE); 
+opts_chunk[["set"]](results="hold"); 
 
 md_document<-md_document(variant="markdown-fenced_code_attributes")
 render(rmdFile, md_document)

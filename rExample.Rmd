@@ -8,10 +8,13 @@ jupyter:
 ---
 
 Here is some R:
-```{r}
+```{r, results="hold"}
 x<-23
 y<-12
-x+y
+z<-x+y
+x
+y
+z
 ```
 Some display math:
 
@@ -22,5 +25,5 @@ $$
 Some graphics
 
 ```{r}
-plot(runif(50))
+plot(runif(z))
 ```

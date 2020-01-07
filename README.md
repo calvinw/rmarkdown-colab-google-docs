@@ -59,3 +59,5 @@ $ make
 or you can use Rstudio and choose the "Build All" menu from the Build tab. Likely if you just choose "Build All" in RStudio it will complain and make you install all the pre-reqs above as you go along. This is fine, just enter the above in RStudios Terminal window as you go along.
 
 See the Makefile for additional build details and targets.
+
+The files requirements.txt and runtime.txt are only used to allow binder to turn the github repo into a container. They are not significant aside from that.

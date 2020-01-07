@@ -14,7 +14,7 @@ R's rmarkdown and knitr packages are used to render the html, pdf, and ipynb fro
 
 Once the ipynb files are committed to a Gitlab (or Github) repo they can then be opened in [Google Colab](https://colab.research.google.com/) or in [Binder](https://mybinder.org/). We display each notebook in the Jupyter notebook viewer and from there they may be opened in Binder if desired.
 
-We currently mirror this repo to a [github repo](https://github.com/calvinw/machine-learning-rmarkdown) since Google Colab, and Binder are able to open ipynb files stored in github repos.
+We currently mirror this repo to a [github repo](https://github.com/calvinw/rmarkdown-colab-google-docs) since Google Colab, and Binder are able to open ipynb files stored in github repos.
 
 The R kernel of Jupyter is used in the R versions of the ipynb Colab formats. This kernel choice works in Google Colab, though it is not advertised yet.   
 

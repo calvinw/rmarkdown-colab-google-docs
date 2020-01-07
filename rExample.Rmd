@@ -8,7 +8,7 @@ jupyter:
 ---
 
 Here is some R:
-```{r, results="hold"}
+```{r}
 x<-23
 y<-12
 z<-x+y

@@ -20,13 +20,40 @@ The R kernel of Jupyter is used in the R versions of the ipynb Colab formats. Th
 
 To see what the project depends on look at the .gitlab-ci.yml file since that is a recipe to install pre-reqs for this project.
 
+## Installation
+
+Install a recent version of pandoc. We used 2.9.1.
+You can download a .deb file for pandoc from here:
+
+https://github.com/jgm/pandoc/releases
+
+Then install it from the bash shell:
+
 ```bash
+$ sudo dpkg -i pandoc-2.9.1-1-amd64.deb
+```
+
+From R install knitr, rmarkdown and a LaTeX distribution (if you do not already have one):
+
+```r
+> install.packages("knitr")
+> install.packages("rmarkdown")
+> install.packages("tinytex")
+> tinytex::install_tinytex()
+```
+
+For python3 development, you will need to install python3:
+
+```bash
+$ sudo apt-get install python3 python3-pip
+$ sudo apt-get install python3-numpy python3-matplotlib python3-pandas 
+$ sudo apt-get install python3-tk
 ```
 
 Then once you are ready, just run make:
 
 ```bash
-make 
+$ make 
 ```
 
 or you can use Rstudio and choose the "Build All" menu from the Build tab. Likely if you just choose "Build All" in RStudio it will complain and make you install all the pre-reqs above as you go along. This is fine, just enter the above in RStudios Terminal window as you go along.

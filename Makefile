@@ -17,15 +17,25 @@ clean :
 	rm -rf *_files 
 
 %.html : %.Rmd
-	@Rscript renderRmd.R $< html_document
-
+	@Rscript -e 'library(knitr); library(rmarkdown)' \
+	         -e 'opts_knit[["set"]](progress=FALSE)' \
+	         -e 'opts_chunk[["set"]](results="hold")' \
+	         -e 'render("$<","html_document")'
+ 
 %.md : %.Rmd
-	@Rscript renderRmdToMd.R $<
+	@Rscript -e 'library(knitr); library(rmarkdown)' \
+	    -e 'opts_knit[["set"]](progress=FALSE)' \
+	    -e 'opts_chunk[["set"]](results="hold")' \
+	    -e 'format<-md_document(variant="markdown-fenced_code_attributes")' \
+	    -e 'render("$<",format)'
 	@sed -i 's/``` r/``` code/g' $@
 	@sed -i 's/``` python/```code/g' $@
 
 %.pdf : %.Rmd
-	@Rscript renderRmd.R $< pdf_document
+	@Rscript -e 'library(knitr); library(rmarkdown)' \
+	         -e 'opts_knit[["set"]](progress=FALSE)' \
+	         -e 'opts_chunk[["set"]](results="hold")' \
+	         -e 'render("$<","pdf_document")'
 
 %.ipynb : %.md
 	pandoc $< -o $@

@@ -21,11 +21,14 @@ clean :
 	         -e 'opts_knit[["set"]](progress=FALSE)' \
 	         -e 'opts_chunk[["set"]](results="hold")' \
 	         -e 'render("$<","html_document")'
- 
+
 %.md : %.Rmd
 	@Rscript -e 'library(knitr); library(rmarkdown)' \
 	    -e 'opts_knit[["set"]](progress=FALSE)' \
-	    -e 'opts_chunk[["set"]](results="hold")' \
+	    -e 'opts_chunk[["set"]](results="hide")' \
+	    -e 'opts_chunk[["set"]](fig.show="hide")' \
+	    -e 'opts_chunk[["set"]](message=FALSE)' \
+	    -e 'opts_chunk[["set"]](warning=FALSE)' \
 	    -e 'format<-md_document(variant="markdown-fenced_code_attributes")' \
 	    -e 'render("$<",format)'
 	@sed -i 's/``` r/``` code/g' $@

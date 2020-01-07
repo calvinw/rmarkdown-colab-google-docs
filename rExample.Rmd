@@ -10,20 +10,16 @@ jupyter:
 Here is some R:
 ```{r}
 x<-23
-y<-12
-z<-x+y
 x
-y
-z
 ```
 Some display math:
 
 $$
-x = \frac{2}{3} 
+\frac{2}{3} 
 $$
 
 Some graphics
 
 ```{r}
-plot(runif(z))
+plot(runif(x))
 ```

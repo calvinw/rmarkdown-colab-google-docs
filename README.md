@@ -1,18 +1,19 @@
-This project shows Rmarkdown(Rmd) examples based on R and Python that can be converted to ipynb files used for Google Colab or Jupyter Notebooks. We include html, pdf, and ipynb versions of each example. 
+This project shows Rmarkdown(Rmd) examples based on R and Python that can be converted to ipynb files for Google Colab or Jupyter Notebooks. We include html, pdf, and ipynb versions of each example file. 
 
 The examples are shown at the pages link for this project:  
 
 [Rmarkdown Colab Google Docs](https://calvinw.gitlab.io/rmarkdown-colab-google-docs/)
 
-Each Rmd file can be rendered to the following formats if desired: 
+Each Rmd file can be rendered as the following formats: 
 1. html
 1. pdf 
-1. Colab Notebook (ipynb)
-1. Jupyter Notebook (ipynb)
+1. ipynb (Colab or Jupyter)
 
-R's rmarkdown and knitr packages are used to render the html and pdf versions from the corresponding Rmd. Then ipynb versions are created by using [pandoc](https://pandoc.org/) to convert from markdown (md) version to the ipynb. This is possible since recent versions of pandoc can create ipynb from markdown [see example](https://pandoc.org/try/?text=---%0Atitle%3A+%22Calculator%22%0Ajupyter%3A%0A++kernelspec%3A%0A++++display_name%3A+R%0A++++language%3A+R%0A++++name%3A+ir%0A---%0A%23+Lorem+ipsum%0A%0A**Lorem+ipsum**+dolor+sit+amet%2C+consectetur+adipiscing+elit.+Nunc+luctus%0Abibendum+felis+dictum+sodales.%0A%0A%60%60%60+code%0Aa%3C-3%0Ab%3C-4%0Aa%0Ab%0A%60%60%60%0A**Lorem+ipsum**+dolor+sit+amet%2C+consectetur+adipiscing+elit.+Nunc+luctus%0Abibendum+felis+dictum+sodales.%0A%0A%60%60%60+code%0Aplot(runif(20))%0A%60%60%60&from=markdown&to=ipynb).  
+R's rmarkdown and knitr packages are used to render the html and pdf versions from the corresponding Rmd. The ipynb versions are created by using [pandoc](https://pandoc.org/) to convert from markdown (md) version to the ipynb. This is possible since recent versions of pandoc can create ipynb from markdown [see example](https://pandoc.org/try/?text=---%0Atitle%3A+%22Calculator%22%0Ajupyter%3A%0A++kernelspec%3A%0A++++display_name%3A+R%0A++++language%3A+R%0A++++name%3A+ir%0A---%0A%23+Lorem+ipsum%0A%0A**Lorem+ipsum**+dolor+sit+amet%2C+consectetur+adipiscing+elit.+Nunc+luctus%0Abibendum+felis+dictum+sodales.%0A%0A%60%60%60+code%0Aa%3C-3%0Ab%3C-4%0Aa%0Ab%0A%60%60%60%0A**Lorem+ipsum**+dolor+sit+amet%2C+consectetur+adipiscing+elit.+Nunc+luctus%0Abibendum+felis+dictum+sodales.%0A%0A%60%60%60+code%0Aplot(runif(20))%0A%60%60%60&from=markdown&to=ipynb).  
 
-Once the ipynb files are committed to a Gitlab (or Github) repo they can then be opened in [Google Colab](https://colab.research.google.com/) or in [Binder](https://mybinder.org/). We display each notebook in the Jupyter notebook viewer and from there they may be opened in Binder if desired.
+We include a new RMarkdown output format called ipynb_format, which is described in the file ipynb_format.R.
+
+Once the ipynb files are committed to a Gitlab (or Github) repo they can then be opened in [Google Colab](https://colab.research.google.com/) or as a Jupyter notebook for example in [Binder](https://mybinder.org/). We display each notebook in the Jupyter notebook viewer and from there they may be opened in Binder if desired.
 
 We currently mirror this repo to a [github repo](https://github.com/calvinw/rmarkdown-colab-google-docs) since Google Colab, and Binder are able to open ipynb files stored in github repos.
 
@@ -42,7 +43,7 @@ From R install knitr, rmarkdown and a LaTeX distribution (if you do not already 
 > tinytex::install_tinytex()
 ```
 
-For python3 development, you will need to install python3:
+For python3 development, you can install python3 packages. (These are just an example, they are not necessary:
 
 ```bash
 $ sudo apt-get install python3 python3-pip

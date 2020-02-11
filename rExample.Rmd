@@ -20,6 +20,8 @@ $$
 
 Some graphics
 
+Some inline code `r 2+3`
+
 ```{r}
 plot(runif(x))
 ```

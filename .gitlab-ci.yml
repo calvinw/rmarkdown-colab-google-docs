@@ -11,6 +11,7 @@ pages:
   - Rscript -e "install.packages('knitr')"
   - Rscript -e "install.packages('rmarkdown')"
   - Rscript -e "install.packages('reticulate')"
+  - Rscript -e "reticulate::use_python('/usr/bin/python3', required=TRUE)"
   - Rscript -e "install.packages('remotes')"
   - Rscript -e "remotes::install_gitlab('calvinw/ipynbdocument')"
   - make

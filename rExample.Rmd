@@ -18,9 +18,9 @@ $$
 \frac{2}{3} 
 $$
 
-Some graphics
-
 Some inline code `r 2+3`
+
+Some graphics
 
 ```{r}
 plot(runif(x))

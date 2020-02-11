@@ -23,8 +23,7 @@ clean :
 	         -e 'render("$<","pdf_document")'
 
 %.ipynb : %.Rmd
-	@Rscript -e 'library(knitr); library(rmarkdown)' \
-	    -e 'source("ipynb_format.R")' \
-	    -e 'render("$<","ipynb_document")'
+	@Rscript -e 'library(knitr); library(rmarkdown); library(ipynbdocument)' \
+		-e 'render("$<","ipynb_document", clean=FALSE)'
 
 .PHONY: all clean

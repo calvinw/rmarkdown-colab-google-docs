@@ -24,6 +24,6 @@ clean :
 
 %.ipynb : %.Rmd
 	@Rscript -e 'library(knitr); library(rmarkdown); library(ipynbdocument)' \
-		-e 'render("$<","ipynb_document", clean=FALSE)'
+		-e 'render("$<","ipynb_document")'
 
 .PHONY: all clean

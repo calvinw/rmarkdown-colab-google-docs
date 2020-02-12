@@ -6,8 +6,14 @@ HTML_FILES = $(SOURCES:%.Rmd=%.html)
 IPYNB_FILES = $(SOURCES:%.Rmd=%.ipynb)
 PDF_FILES = $(SOURCES:%.Rmd=%.pdf)
 
-all : $(HTML_FILES) $(PDF_FILES) $(IPYNB_FILES)
+all : html pdf ipynb
 	@echo All files are now up to date
+
+html: $(HTML_FILES)
+
+pdf: $(PDF_FILES)
+
+ipynb: $(IPYNB_FILES)
 
 clean :
 	@echo Removing html, pdf, files...	
@@ -24,6 +30,6 @@ clean :
 
 %.ipynb : %.Rmd
 	@Rscript -e 'library(knitr); library(rmarkdown); library(ipynbdocument)' \
-		-e 'render("$<","ipynb_document")'
+		 -e 'render("$<","ipynb_document")'
 
 .PHONY: all clean
